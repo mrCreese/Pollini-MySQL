@@ -1,0 +1,50 @@
+
+CREATE TABLE table_name (
+    UserID int,
+    Name varchar(25),
+    Email varchar(25),
+    City varchar(25)
+);
+
+INSERT INTO table_name
+VALUES (345, 'John Smith', 'Sincere@april.biz', 'London');
+
+INSERT INTO table_name
+VALUES (678, 'Robert Green', 'roby@test.com', 'Milan');
+
+INSERT INTO table_name
+VALUES (875, 'Alex Jonhson', 'fooly@mail.com', 'New York');
+
+INSERT INTO table_name
+VALUES (349, 'George Gems', 'Gems@myMail.com', 'Sydney');
+
+CREATE TABLE orden (
+    orderID int,
+    UserID int,
+    OrderDate varchar(25),
+    Product varchar(25),
+    Price int
+);
+
+INSERT INTO orden
+VALUES (1, 875, '19-04-2002', 'Book', 34);
+
+INSERT INTO table_name
+VALUES (2, 678, '15-03-2002', 'Guitar', 334);
+
+INSERT INTO table_name
+VALUES (3, 349, '24-02-2002', 'Piano', 678);
+
+INSERT INTO table_name
+VALUES (4, 345, '12-08-2002', 'Cords', 4);
+
+\\prima ho provato con INNER JOIN
+SELECT orden.OrderDate, orden.Product, orden.Price, table_name.Name, table_name.City, table_name.Email
+FROM orden
+INNER JOIN table_name ON Orders.CustomerID=Customers.CustomerID;
+
+\\poi ho creato una nuova tabella
+CREATE TABLE FinalOrder AS
+    SELECT orden.OrderDate, orden.Product, orden.Price, table_name.Name, table_name.City, table_name.Email
+    FROM orden, table_name
+    WHERE orden.UserID = table_name.UserID;
